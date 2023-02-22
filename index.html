@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic HTML Structure</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="table.html">table</a></li>
+                <li><a href="accordian.html">Accordian</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    
+
+  <main>
+    <form action="" onsubmit="checkForm()">
+      <label for="firstname">Firstname <span class="sr-only">required</span></label>
+      <input type="text" id="firstname" name="firstname" placeholder="Your firstname" required>
+
+      <label for="lastname">Lastname <span class="sr-only">required</span></label>
+      <input type="text" id="lastname" name="lastname" placeholder="Your lastname" required>
+
+      <label for="email">Email <span class="sr-only">required</span></label>
+      <input type="email" id="email" name="email" placeholder="Your email address" required>
+
+      <label for="birthyear">Birth Year <span class="sr-only">required</span></label>
+      <select id="birthyear" name="birthyear" required>
+        <option value="">-- Select Your Birth Year --</option>
+        <option value="2010">2010</option>
+        <option value="2011">2011</option>
+        <option value="2012">2012</option>
+        <option value="2013">2013</option>
+        <option value="2014">2014</option>
+      </select>
+
+      <fieldset>
+        <legend>Gender <span class="sr-only">required</span></legend>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Male</label>
+
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">Female</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Interests <span class="sr-only">required</span></legend>
+        <input type="checkbox" id="sports" name="interests" value="sports" required>
+        <label for="sports">Sports</label>
+
+        <input type="checkbox" id="music" name="interests" value="music" required>
+        <label for="music">Music</label>
+
+        <input type="checkbox" id="travel" name="interests" value="travel" required>
+        <label for="travel">Travel</label>
+      </fieldset>
+
+      <button type="reset">Reset</button>
+      <button type="submit" disabled onclick="checkForm()">Submit</button>
+      <!-- <input type="submit" value="submit" disabled onclick="checkForm()" class="submitBtn"> -->
+    </form>
+  </main>
+
+  
+    <footer>
+        
+    </footer>
+
+     <script>
+        const inputs = document.querySelectorAll('input');
+        const submitBtn = document.querySelector('button[type="submit"]');
+      
+        function checkForm() {
+          let isFormValid = true;
+          inputs.forEach(inputs => {
+            if (inputs.value.length==0) {
+              isFormValid = false;
+            }
+          });
+      
+          if (isFormValid) {
+            submitBtn.removeAttribute('disabled');
+            
+          } else {
+            submitBtn.setAttribute('disabled');
+            
+           
+          }
+        }
+      
+        inputs.forEach(input => {
+          input.addEventListener('input', checkForm);
+        });
+      </script>
+  
+</body>
+</html>
